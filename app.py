@@ -262,6 +262,11 @@ def add_song_sidebar():
             all_songs = st.session_state.songs[:]
             all_songs.append(normalized)
             st.session_state.songs = all_songs
+            message = f"Added '{normalized['title']}' by {normalized['artist']} to playlist."
+            if hasattr(st, "toast"):
+                st.toast(message, icon="✅")
+            else:
+                st.sidebar.success(message)
 
 
 def playlist_tabs(playlists):
