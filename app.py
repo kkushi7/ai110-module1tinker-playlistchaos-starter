@@ -188,6 +188,7 @@ def profile_sidebar():
     st.sidebar.header("Mood profile")
 
     profile = st.session_state.profile
+    st.sidebar.write("Current profile:", profile.get("name", ""))
 
     profile["name"] = st.sidebar.text_input(
         "Profile name",
@@ -228,8 +229,6 @@ def profile_sidebar():
         "Include Mixed playlist in views",
         value=bool(profile.get("include_mixed", True)),
     )
-
-    st.sidebar.write("Current profile:", profile["name"])
 
 
 def add_song_sidebar():
