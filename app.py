@@ -225,9 +225,14 @@ def profile_sidebar():
         index=0,
     )
 
+    if "include_mixed" not in st.session_state:
+        st.session_state.include_mixed = bool(
+            profile.get("include_mixed", True))
+
     profile["include_mixed"] = st.sidebar.checkbox(
         "Include Mixed playlist in views",
-        value=bool(profile.get("include_mixed", True)),
+        value=st.session_state.include_mixed,
+        key="include_mixed",
     )
 
 
